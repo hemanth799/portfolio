@@ -75,12 +75,14 @@
     render();
   }
 
-  document.querySelector('[data-showcase-open]').addEventListener('click', (event) => {
-    returnFocus = event.currentTarget;
-    index = 0;
-    render();
-    dialog.showModal();
-    $('[data-showcase-close]').focus();
+  document.querySelectorAll('[data-showcase-open]').forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      returnFocus = event.currentTarget;
+      index = 0;
+      render();
+      dialog.showModal();
+      $('[data-showcase-close]').focus();
+    });
   });
   $('[data-showcase-close]').addEventListener('click', () => dialog.close());
   $('[data-showcase-prev]').addEventListener('click', () => move(-1));
